@@ -147,5 +147,4 @@ with open("matches.json", "w", encoding="utf-8") as f:
 print(json.dumps(result, ensure_ascii=False, indent=2))
 print("matches.json created successfully")
 
-input("Press Enter to close...")
 driver.quit()

@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "count": 4,
+  "matches": [
+    {
+      "away": "Egypt",
+      "away_logo": "",
+      "away_score": "3",
+      "home": "New Zealand",
+      "home_logo": "",
+      "home_score": "1",
+      "is_live": false,
+      "league": "Premium Football",
+      "league_logo": "",
+      "minute": "Finished",
+      "status": "Finished"
+    },
+    {
+      "away": "Austria",
+      "away_logo": "",
+      "away_score": "",
+      "home": "Argentina",
+      "home_logo": "",
+      "home_score": "PREVIEW",
+      "is_live": false,
+      "league": "Premium Football",
+      "league_logo": "",
+      "minute": "18:00",
+      "status": "18:00"
+    },
+    {
+      "away": "Iraq",
+      "away_logo": "",
+      "away_score": "",
+      "home": "France",
+      "home_logo": "",
+      "home_score": "PREVIEW",
+      "is_live": false,
+      "league": "Premium Football",
+      "league_logo": "",
+      "minute": "22:00",
+      "status": "22:00"
+    },
+    {
+      "away": "Kalmar (Swe)",
+      "away_logo": "",
+      "away_score": "-",
+      "home": "AIK (Swe)",
+      "home_logo": "",
+      "home_score": "-",
+      "is_live": false,
+      "league": "Premium Football",
+      "league_logo": "",
+      "minute": "14:00",
+      "status": "14:00"
+    }
+  ]
+}
