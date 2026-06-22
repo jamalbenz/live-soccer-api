@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import json
 import os
+import subprocess
+import sys
 
 app = Flask(__name__)
 
@@ -10,13 +12,31 @@ def home():
 
 @app.route("/matches")
 def matches():
-    if not os.path.exists("matches.json"):
-        return jsonify({"success": False, "matches": [], "message": "matches.json not found"})
+    try:
+        subprocess.run(
+            [sys.executable, "flashscore_scraper.py"],
+            timeout=180,
+            check=False
+        )
 
-    with open("matches.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
+        if not os.path.exists("matches.json"):
+            return jsonify({
+                "success": False,
+                "matches": [],
+                "message": "matches.json not found"
+            })
 
-    return jsonify(data)
+        with open("matches.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        return jsonify(data)
+
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "matches": [],
+            "message": str(e)
+        })
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
