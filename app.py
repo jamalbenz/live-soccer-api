@@ -19,6 +19,52 @@ def matches():
         data = json.load(f)
 
     return jsonify(data)
+@app.route("/matches/live")
+def live_matches():
+    with open("matches.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    live = [m for m in data["matches"] if m["is_live"]]
+
+    return jsonify({
+        "success": True,
+        "count": len(live),
+        "matches": live
+    })
+
+
+@app.route("/matches/upcoming")
+def upcoming_matches():
+    with open("matches.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    upcoming = [
+        m for m in data["matches"]
+        if not m["is_live"] and m["status"] != "Finished"
+    ]
+
+    return jsonify({
+        "success": True,
+        "count": len(upcoming),
+        "matches": upcoming
+    })
+
+
+@app.route("/matches/finished")
+def finished_matches():
+    with open("matches.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    finished = [
+        m for m in data["matches"]
+        if m["status"] == "Finished"
+    ]
+
+    return jsonify({
+        "success": True,
+        "count": len(finished),
+        "matches": finished
+    })
 
 @app.route("/refresh")
 def refresh():
