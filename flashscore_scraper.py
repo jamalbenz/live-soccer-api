@@ -40,6 +40,19 @@ let teams = {
   "malmo":"Allsvenskan","malmö":"Allsvenskan","aik":"Allsvenskan","djurgarden":"Allsvenskan","djurgården":"Allsvenskan","hammarby":"Allsvenskan","ifk goteborg":"Allsvenskan","ifk göteborg":"Allsvenskan","elfsborg":"Allsvenskan","norrkoping":"Allsvenskan","norrköping":"Allsvenskan","hacken":"Allsvenskan","häcken":"Allsvenskan","kalmar":"Allsvenskan","sirius":"Allsvenskan",
   "fc copenhagen":"Nordic Football","copenhagen":"Nordic Football","brondby":"Nordic Football","brøndby":"Nordic Football","midtjylland":"Nordic Football","rosenborg":"Nordic Football","molde":"Nordic Football","bodo/glimt":"Nordic Football","bodø/glimt":"Nordic Football",
   "al nassr":"Saudi Pro League","al hilal":"Saudi Pro League","al ittihad":"Saudi Pro League","al ahli":"Saudi Pro League"
+    "senegal":"World Cup","algeria":"World Cup","jordan":"World Cup",
+  "ghana":"World Cup","panama":"World Cup","colombia":"World Cup",
+  "uzbekistan":"World Cup","dr congo":"World Cup","cape verde":"World Cup",
+  "saudi arabia":"World Cup","iran":"World Cup","japan":"World Cup",
+  "tunisia":"World Cup","mexico":"World Cup","canada":"World Cup",
+  "switzerland":"World Cup","brazil":"World Cup","scotland":"World Cup",
+  "usa":"World Cup","united states":"World Cup","australia":"World Cup",
+  "turkey":"World Cup","ecuador":"World Cup","ivory coast":"World Cup",
+
+  "malmo ff":"Allsvenskan","mjallby":"Allsvenskan","mjällby":"Allsvenskan",
+  "brommapojkarna":"Allsvenskan","halmstad":"Allsvenskan",
+  "degerfors":"Allsvenskan","osters":"Allsvenskan","östers":"Allsvenskan",
+  "varnamo":"Allsvenskan","värnamo":"Allsvenskan",
 };
 
 let blocked = [
