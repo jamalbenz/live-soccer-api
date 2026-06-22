@@ -1,6 +1,7 @@
 import undetected_chromedriver as uc
 import time
 import json
+from datetime import datetime
 
 options = uc.ChromeOptions()
 options.add_argument("--start-maximized")
@@ -113,10 +114,10 @@ return matches.slice(0, 20);
 
 result = {
     "success": True,
+    "updated_at": datetime.utcnow().isoformat() + "Z",
     "count": len(data),
     "matches": data
 }
-
 with open("matches.json", "w", encoding="utf-8") as f:
     json.dump(result, f, ensure_ascii=False, indent=2)
 
