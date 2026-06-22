@@ -47,6 +47,64 @@ let blocked = [
   "bombada","brikama","falcons","steve biko","dutch lions","hart academy"
 ];
 
+function cleanLeague(text){
+  text = text || "";
+  text = text.replace("Standings", "").trim();
+
+  if (text.toLowerCase().includes("world championship")) return "World Cup";
+  if (text.toLowerCase().includes("champions league")) return "Champions League";
+  if (text.toLowerCase().includes("europa league")) return "Europa League";
+  if (text.toLowerCase().includes("conference league")) return "Conference League";
+  if (text.toLowerCase().includes("premier league")) return "Premier League";
+  if (text.toLowerCase().includes("laliga") || text.toLowerCase().includes("la liga")) return "LaLiga";
+  if (text.toLowerCase().includes("serie a")) return "Serie A";
+  if (text.toLowerCase().includes("bundesliga")) return "Bundesliga";
+  if (text.toLowerCase().includes("ligue 1")) return "Ligue 1";
+  if (text.toLowerCase().includes("allsvenskan")) return "Allsvenskan";
+  if (text.toLowerCase().includes("superettan")) return "Superettan";
+  if (text.toLowerCase().includes("saudi")) return "Saudi Pro League";
+
+  return "Premium Football";
+}
+
+function getLeague(row){
+  let section = row.closest('[class*="event__match"]') || row;
+  let p = row.previousElementSibling;
+  let tries = 0;
+
+  while(p && tries < 30){
+    let txt = (p.innerText || "").trim();
+
+    if (
+      txt &&
+      txt.length < 140 &&
+      !txt.includes("\\n") &&
+      (
+        txt.toLowerCase().includes("world") ||
+        txt.toLowerCase().includes("champions") ||
+        txt.toLowerCase().includes("europa") ||
+        txt.toLowerCase().includes("conference") ||
+        txt.toLowerCase().includes("premier") ||
+        txt.toLowerCase().includes("laliga") ||
+        txt.toLowerCase().includes("la liga") ||
+        txt.toLowerCase().includes("serie a") ||
+        txt.toLowerCase().includes("bundesliga") ||
+        txt.toLowerCase().includes("ligue 1") ||
+        txt.toLowerCase().includes("allsvenskan") ||
+        txt.toLowerCase().includes("superettan") ||
+        txt.toLowerCase().includes("saudi")
+      )
+    ) {
+      return cleanLeague(txt);
+    }
+
+    p = p.previousElementSibling;
+    tries++;
+  }
+
+  return "Premium Football";
+}
+
 rows.forEach(row => {
   let txt = row.innerText.trim().split("\\n").filter(Boolean);
   let allText = txt.join(" ").toLowerCase();
@@ -56,9 +114,10 @@ rows.forEach(row => {
 
   if (txt.length >= 3) {
     let status = txt[0] || "NS";
+    let league = getLeague(row);
 
     matches.push({
-      league: "Premium Football",
+      league: league,
       home: txt[1] || "",
       away: txt[2] || "",
       home_logo: "",
