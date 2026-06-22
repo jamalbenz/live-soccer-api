@@ -90,18 +90,21 @@ rows.forEach(row => {
     let away = txt[2] || "";
 
     matches.push({
-      league: league,
-      home: home,
-      away: away,
-      home_logo: logoName(home),
-      away_logo: logoName(away),
-      home_score: txt[3] || "",
-      away_score: txt[4] || "",
-      league_logo: leagueLogo(league),
-      status: status,
-      minute: status,
-      is_live: !status.toLowerCase().includes("finished") && !status.match(/^\\d{1,2}:\\d{2}$/)
-    });
+    id: home.toLowerCase().replaceAll(" ", "-") + "-vs-" + away.toLowerCase().replaceAll(" ", "-"),
+    league: league,
+    league_logo: leagueLogo(league),
+    country: league === "Allsvenskan" ? "Sweden" : "",
+    home: home,
+    home_logo: logoName(home),
+    away: away,
+    away_logo: logoName(away),
+    home_score: txt[3] || "",
+    away_score: txt[4] || "",
+    status: status,
+    minute: status,
+    match_time: status.match(/^\\d{1,2}:\\d{2}$/) ? status : "",
+    is_live: !status.toLowerCase().includes("finished") && !status.match(/^\\d{1,2}:\\d{2}$/)
+  });
   }
 });
 
